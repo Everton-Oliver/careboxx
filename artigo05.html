@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+		<!--script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-firestore.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>-->
+	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>-->
+	<title>O que mudou a mente de uma mãe que se recusava a vacinar seus filhos</title>
+	 <script id="navegg" type="text/javascript">
+  (function(n,v,g){o="Navegg";if(!n[o]){
+    a=v.createElement('script');a.src=g;b=document.getElementsByTagName('script')[0];
+    b.parentNode.insertBefore(a,b);n[o]=n[o]||function(parms){
+    n[o].q=n[o].q||[];n[o].q.push([this, parms])};}})
+  (window, document, 'https://tag.navdmp.com/universal.min.js');
+  window.naveggReady = window.naveggReady||[];
+  window.nvg55988 = new Navegg({
+    acc: 55988
+  });
+</script> 
+		<script>
+			var config = {
+	    	apiKey: "AIzaSyBpq0XHCRjWsWder9EHoAwslq9zlIQIb90",
+	    	authDomain: "teste-f17ad.firebaseapp.com",
+	    	databaseURL: "https://teste-f17ad.firebaseio.com",
+	    	projectId: "teste-f17ad",
+	    	storageBucket: "teste-f17ad.appspot.com",
+	    	messagingSenderId: "1056073446108",
+	        timestampsInSnapshots: true
+   		 };
+         app=firebase.initializeApp(config);
+         db=app.firestore()
+
+
+		let ip = getIp(function (ip) {
+    	
+		
+		
+         window.addEventListener('load', function(){
+		 	let f=document.querySelector('form');
+         	function saveuser(name, email, DiaMesAno, classifica){
+         		db.collection("users").add({
+         			name:name, email:email, data:DiaMesAno, meuIp:ip, tipo:classifica
+         })
+    	.then(function(docRef) {
+    		alert('Confira seu e-mail, se não recebeu, cheque sua caixa de SPAM.');
+    		f.elements['name'].value="";
+			f.elements['email'].value="";
+		})
+		.catch(function(error) {
+    		console.error("Error adding document: ", error);
+		});
+		}	
+		f.addEventListener('submit', function(e){
+			let name=f.elements['name'].value
+			let email=f.elements['email'].value
+			let classifica= classificaTipoEmail(email);
+			let DiaMesAno = completeDate();
+
+			saveuser(name, email, DiaMesAno, classifica)
+			e.preventDefault();
+		})
+	});
+});
+         // DATA 
+function completeDate () {
+    now = new Date();
+    year = "" + now.getFullYear();
+    month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
+    day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+    hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+    minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+    second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+    return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+  }
+
+function getIp(callback)
+{
+    function response(s)
+    {
+        callback(window.userip);
+
+        s.onload = s.onerror = null;
+        document.body.removeChild(s);
+    }
+
+    function trigger()
+    {
+        window.userip = false;
+
+        var s = document.createElement("script");
+        s.async = true;
+        s.onload = function() {
+            response(s);
+        };
+        s.onerror = function() {
+            response(s);
+        };
+
+        s.src = "https://l2.io/ip.js?var=userip";
+        document.body.appendChild(s);
+    }
+
+    if (/^(interactive|complete)$/i.test(document.readyState)) {
+        trigger();
+    } else {
+        document.addEventListener('DOMContentLoaded', trigger);
+    }
+}
+
+// Seleciona tipo de e-mail
+classificaTipoEmail = (email) => {
+
+let dominio = email.substring(email.indexOf("@") + 1, email.length);
+
+let listaConsumidor = [
+  'gmail.com',
+  'uol.com.br',
+  'ig.com.br',
+  'outlook.com',
+  'outlook.com.br',
+  'hotmail.com',
+  'hotmail.com.br',
+  'bol.com.br',
+  'icloud.com',
+  'terra.com.br',
+  'globo.com',
+  'yahoo.com.br',
+  'yahoo.com.br',
+  'terra.com.br'];
+
+if (listaConsumidor.includes(dominio)) {
+  return 'B2C';
+} else {
+  return 'B2B';
+}
+
+}
+
+	</script>
+</head>
+<body>
+<title>Formulário de Inscrição</title>
+
+<header align="center">
+    <div>
+    <img src="imagens/logo.png">
+    </div>
+    <div><a href="index.html" class="space">
+        <label>Home</label>
+      </a>
+      
+      <a href="blog.html" class="space">
+        <label>Blog</label>
+      </a>
+      
+      <a href="fb.html" class="space">
+        <label>Faça nosso teste!</label>
+      </a>
+    </div></header>
+
+<div><form name="formCadastro" align="center" action="" method="post">
+    <h1> <div align="center">Faça nosso Quiz!</div></h1>
+    <h3>Deixe seu contato e receba nosso Quiz no seu e-mail:</h3>
+ 
+    <p class="name"></p>
+    <input name="name"  placeholder="Nome Completo" required="required">
+    <br>
+    <p class="email"></p>
+    <br>
+  <input name="email" name="email" placeholder="Informe seu e-mail" required="required">
+  <br>
+    <p class="enviar"></p>
+    <br>
+    <input type="submit" name="Enviar" value="Enviar"/>
+     </form>
+ </form></div>
+ <br>
+<table  width="900" align="center">
+<td><img src="imagens/artigo05.png"></td>
+
+	<table>
+			<h5 align="center">15 abril - Roberta Ferron</h5>
+			<h2 color="#043D8E" align="center">O que mudou a mente de uma mãe que se recusava a vacinar seus filhos</h2>
+			<p width="595" height="758" left="398" top="629" border="1">O artigo abaixo é uma tradução livre de uma história real e também motivo de grave preocupação da Organização Mundial da Saúde em 2019. (Fonte: CBC Canadá)</p>
+			<p width="595" height="758" left="398" top="629" border="1">Publicado: 12 de Abril, 2019| 12:00
+			<p width="595" height="758" left="398" top="629" border="1">Lendo histórias de horror online sobre pais alegando que seus filhos "nunca mais foram os mesmos” depois de serem vacinados, Kristen O'Meara se convenceu a manter seus três filhos não vacinados. Temendo que sua segurança estivesse em risco, ela preferiu não vacinar seus filhos. (Enviado por Kristen O'Meara).</p>
+			<p width="595" height="758" left="398" top="629" border="1">Evidências científicas de longa data - apoiadas pela Organização Mundial da Saúde, Centros para Controle e Prevenção de Doenças e pelo Departamentode Saúde do Canadá - mostram que as vacinas são seguras e que não há vínculo entre receber vacinas e desenvolver doenças graves ou crônicas.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Mas isso não acalmou o ceticismo de Kristen quando se tratou de decidir vacinar ou não seus filhos. Nesse caso, as informações que ela leu de fontesonline alternativas acabaram levando-a a decidir evitar a vacinação de seus filhos.</p>
+			<p width="595" height="758" left="398" top="629" border="1">"Se eu os vacinar e eles tiverem uma reação horrível, vou me sentir culpadapelo resto da minha vida", disse Kristen ao apresentador do Open, Piya Chattopadhyay, sobre sua antiga mentalidade.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Mitos e teorias da conspiração tentando refutar a necessidade de vacinas continuam a prosperar. A Organização Mundial da Saúde (OMS) agora lista "hesitação vacinal" entre suas 10 principais ameaças à saúde global em 2019.</p>
+			<p width="595" height="758" left="398" top="629" border="1">O Dr. Paul Offit, um pediatra americano especializado em doenças infecciosas e co-inventor da vacina contra o rotavírus, diz que, como esse tipo de doença não é mais prevalente, as pessoas não têm medo ou são motivadas a tomar medidas preventivas.</p>
+			<p width="595" height="758" left="398" top="629" border="1">"Se você está preocupado com uma vacina, e você está esperando que talvez haja uma razão para não a tomar, você pode facilmente encontrar essas razões na internet, mesmo que elas não sejam científicas e precisas", disse Offit.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Ele também aponta que, como sociedade, somos mais propensos às teorias da conspiração, e diz que há uma crença de que "as empresas farmacêuticas são obscuras, ou que estão controlando o ambiente médico".</p>
+			<p width="595" height="758" left="398" top="629" border="1">Uma pesquisa recente da Insights West, sugeriu que 20% da população da província da Columbia Britânica, no Canadá, acredita que as vacinas são encorajadas somente para que as empresas farmacêuticas possam ganhar dinheiro. Neste momento, a Columbia Britanica está enfrentando um surto de Sarampo.</p>
+			<h4 width="595" height="758" left="398" top="629" border="1">Pegando rotavírus</h4>
+			<p width="595" height="758" left="398" top="629" border="1">Quando um surto de sarampo que se originou na Disneylandia da Califórnia em 2015 se espalhou para a cidade natal de Kristen, Chicago, ela permaneceu convencida de que as vacinas eram desnecessárias, porque sentia que as chances de ser infectado eram poucas ou nenhuma.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Mas seu ponto de vista mudou rapidamente quando todos os seus filhos pegaram o rotavírus, um vírus contagioso que causa febre, vômitos e diarreia. Ela, junto com seus filhos, ficou gravemente doente por dias.</p>
+			<p width="595" height="758" left="398" top="629" border="1">"Eu meio que tive um momento de perceber onde eu estava, 'ó meu Deus, isso foi rotavírus - e há uma vacina para isso'", disse ela.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Kristen sentiu uma imensa culpa sabendo que seus filhos adoeceram como resultado de sua decisão de não os vacinar. Mas a urgência de vaciná-los não chegou até que uma colega respeitada a envergonhou depois de ouvir oque havia acontecido.</p>
+			<p width="595" height="758" left="398" top="629" border="1">"Ela olhou para mim com desprezo e apenas disse: "Isso me deixa com raiva'", disse Kristen sobre a troca com sua colega.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Foi a primeira vez que Kristen disse que ela havia sido confrontada tão diretamente sobre sua decisão. Depois dessa conversa, ela finalmente fez a escolha de vacinar seus três filhos.</p>
+			<p width="595" height="758" left="398" top="629" border="1">E você, caro leitor(a)? Conte-nos a sua opinião a respeito da vacinação preventiva e como você filtra as informações oriundas de diversas fontes que podem ser verdadeiras, baseadas em pesquisas e testes, ou teorias conspiratórias concluídas por alguém.</p>
+			<p width="595" height="758" left="398" top="629" border="1">FONTE: No Aberto · Publicado: Apr 12, 2019 12:00 PM ET | Última atualização: </p>
+			<p width="595" height="758" left="398" top="629" border="1">12 de abril (https://www.cbc.ca/radio/outintheopen/switching-sides-1.5084481/what-ultimately-changed-the-mind-of-a-mother-who-refused-to-vaccinate-her-kids-1.5094543)</p>
+
+
+</p>
+	</table>
+<footer id="footer">
+  <a href="https://www.facebook.com/blogcareboxx/"><img width="30" height="30" src="imagens/iconfb.png"></a>
+ 
+  <div width="900" align="right"> © 2019 Careboxx</div></footer>
+
+
+    <style type="text/css">
+
+    #footer {
+    background: #043D8E;
+    padding-top: 10px;
+    color: white;
+    left: 13.65%;
+    right: 84.65%;
+    top: 97.21%;
+    bottom: 1.4%;
+
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+    @media screen and (max-width: 960px) {
+    .wrap {
+    width: 100%;
+    }
+</html>

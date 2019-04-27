@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139042578-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-139042578-1');
+</script>
+
+	<meta charset="utf-8">
+		<!--script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-firestore.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>-->
+	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-messaging.js"></script>-->
+	<!--script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-functions.js"></script>-->
+	<title>Dicas para armazenamento adequado de medicamentos em casa</title>
+		<script>
+			var config = {
+	    	apiKey: "AIzaSyBpq0XHCRjWsWder9EHoAwslq9zlIQIb90",
+	    	authDomain: "teste-f17ad.firebaseapp.com",
+	    	databaseURL: "https://teste-f17ad.firebaseio.com",
+	    	projectId: "teste-f17ad",
+	    	storageBucket: "teste-f17ad.appspot.com",
+	    	messagingSenderId: "1056073446108",
+	        timestampsInSnapshots: true
+   		 };
+         app=firebase.initializeApp(config);
+         db=app.firestore()
+
+
+		let ip = getIp(function (ip) {
+    	
+		
+		
+         window.addEventListener('load', function(){
+		 	let f=document.querySelector('form');
+         	function saveuser(name, email, DiaMesAno, classifica){
+         		db.collection("users").add({
+         			name:name, email:email, data:DiaMesAno, meuIp:ip, tipo:classifica
+         })
+    	.then(function(docRef) {
+    		alert('Confira seu e-mail, se não recebeu, cheque sua caixa de SPAM.');
+    		f.elements['name'].value="";
+			f.elements['email'].value="";
+		})
+		.catch(function(error) {
+    		console.error("Error adding document: ", error);
+		});
+		}	
+		f.addEventListener('submit', function(e){
+			let name=f.elements['name'].value
+			let email=f.elements['email'].value
+			let classifica= classificaTipoEmail(email);
+			let DiaMesAno = completeDate();
+
+			saveuser(name, email, DiaMesAno, classifica)
+			e.preventDefault();
+		})
+	});
+});
+         // DATA 
+function completeDate () {
+    now = new Date();
+    year = "" + now.getFullYear();
+    month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
+    day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+    hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+    minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+    second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+    return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+  }
+
+function getIp(callback)
+{
+    function response(s)
+    {
+        callback(window.userip);
+
+        s.onload = s.onerror = null;
+        document.body.removeChild(s);
+    }
+
+    function trigger()
+    {
+        window.userip = false;
+
+        var s = document.createElement("script");
+        s.async = true;
+        s.onload = function() {
+            response(s);
+        };
+        s.onerror = function() {
+            response(s);
+        };
+
+        s.src = "https://l2.io/ip.js?var=userip";
+        document.body.appendChild(s);
+    }
+
+    if (/^(interactive|complete)$/i.test(document.readyState)) {
+        trigger();
+    } else {
+        document.addEventListener('DOMContentLoaded', trigger);
+    }
+}
+
+// Seleciona tipo de e-mail
+classificaTipoEmail = (email) => {
+
+let dominio = email.substring(email.indexOf("@") + 1, email.length);
+
+let listaConsumidor = [
+  'gmail.com',
+  'uol.com.br',
+  'ig.com.br',
+  'outlook.com',
+  'outlook.com.br',
+  'hotmail.com',
+  'hotmail.com.br',
+  'bol.com.br',
+  'icloud.com',
+  'terra.com.br',
+  'globo.com',
+  'yahoo.com.br',
+  'yahoo.com.br',
+  'terra.com.br'];
+
+if (listaConsumidor.includes(dominio)) {
+  return 'B2C';
+} else {
+  return 'B2B';
+}
+
+}
+
+	</script>
+	<title>Artigo</title>
+</head>
+<body>
+<title>Formulário de Inscrição</title>
+
+<header align="center">
+    <div>
+    <img src="imagens/logo.png">
+    </div>
+    <div><a href="index.html" class="space">
+        <label>Home</label>
+      </a>
+      
+      <a href="blog.html" class="space">
+        <label>Blog</label>
+      </a>
+      
+      <a href="fb.html" class="space">
+        <label>Faça nosso teste!</label>
+      </a>
+    </div></header>
+
+<div><form name="formCadastro" align="center" action="" method="post">
+    <h1> <div align="center">Faça nosso Quiz!</div></h1>
+    <h3>Deixe seu contato e receba nosso Quiz no seu e-mail:</h3>
+ 
+    <p class="name"></p>
+    <input name="name"  placeholder="Nome Completo" required="required">
+    <br>
+    <p class="email"></p>
+    <br>
+  <input name="email" name="email" placeholder="Informe seu e-mail" required="required">
+  <br>
+    <p class="enviar"></p>
+    <br>
+    <input type="submit" name="Enviar" value="Enviar"/>
+     </form>
+ </form></div>
+ <br>
+<table  width="900" align="center">
+<td><img src="imagens/artigo06.png"></td>
+	<table>
+			<h5 align="center">15 abril - Roberta Ferron</h5>
+			<h2 color="#043D8E" align="center">Dicas para armazenamento adequado de medicamentos em casa</h2>
+			<p width="595" height="758" left="398" top="629" border="1">Muitos fatores podem danificar sua medicação, incluindo calor, ar, luz e umidade. A exposição de medicamentos a condições inadequadas pode torná-los ineficazes ou até prejudiciais se ingeridos. É importante ter em mente que o local onde você armazena sua medicação pode afetar sua eficácia, validade e segurança.
+			<h3 width="595" height="758" left="398" top="629" border="1">COMO ARMAZENAR SEUS MEDICAMENTOS</h3>
+			<p width="595" height="758" left="398" top="629" border="1">Todos os medicamentos têm as suas próprias condições de armazenamento recomendadas, desde a temperatura ambiente até a refrigeração e ao congelamento, motivo pelo qual é aconselhável consultar um farmacêutico sobre as instruções de armazenamento específicas. A maioria dos medicamentos pode ser armazenada à temperatura ambiente, em local fresco, limpo e seco.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Exemplos incluem a gaveta da cômoda, um armário, uma caixa de armazenamento e uma prateleira.</p>
+			<p width="595" height="758" left="398" top="629" border="1">É melhor evitar o armário de remédios do banheiro, pois o calor e a umidadedo chuveiro, da banheira e da pia podem danificar o medicamento. Também é aconselhável evitar a cozinha, uma vez que o calor do fogão, da pia e quaisquer aparelhos quentes, também podem danificar seu medicamento.</p>
+			<p width="595" height="758" left="398" top="629" border="1">Lembre-se sempre de guardar sua medicação fora da vista e alcance de crianças e animais de estimação, para evitar ingestão acidental.</p>
+			<p width="595" height="758" left="398" top="629" border="1">As mudanças climáticas também podem afetar as condições de armazenamento de sua medicação.</p>
+			<h4 width="595" height="758" left="398" top="629" border="1">Veja abaixo as referências mais comuns:</h4>
+			 <p width="595" height="758" left="398" top="629" border="1">- Temperatura Ambiente: Entre 15 e 25 graus Celsius;</p>
+			 <p width="595" height="758" left="398" top="629" border="1">- Temperatura Fria: Entre 8 e 15 graus Celsius;</p>
+			 <p width="595" height="758" left="398" top="629" border="1">- Refrigeração: Entre 2 e 8 graus Celsius;</p>
+			 <p width="595" height="758" left="398" top="629" border="1">- Temperatura de Congelação: Entre -10 e -25 graus Celsius.</p>
+			 <p width="595" height="758" left="398" top="629" border="1">Verifique com seu farmacêutico a faixa de temperatura exata para sua medicação.</p>
+			 <h3 width="595" height="758" left="398" top="629" border="1">COMO VIAJAR COM OS SEUS MEDICAMENTOS</h3>
+			 <p width="595" height="758" left="398" top="629" border="1">Durante as viagens é importante garantir que seu remédio viaje em segurança com você. Ao fazer as malas para uma viagem, sempre guarde a medicação no recipiente com a etiqueta original e leve uma cópia da receita para evitar problemas ou dúvidas desnecessárias, bem como para facilitar aidentificação de medicamentos em caso de emergência.</p>
+			 <p width="595" height="758" left="398" top="629" border="1">Não tente economizar espaço para bagagem combinando medicamentos em um único recipiente. Sempre traga seus medicamentos com você em sua bagagem de mão e considere a possibilidade de colocar pacotes de sílica em frascos de medicação se a viagem for prolongada e com destino à lugares quentes / úmidos.</p>
+			 <p width="595" height="758" left="398" top="629" border="1">Medicamentos comuns com requisitos especiais de armazenamento inclueminsulina e antibióticos líquidos.</p>
+			 <p width="595" height="758" left="398" top="629" border="1">A insulina é estável à temperatura ambiente por 28 a 30 dias, e a insulina que não será usada dentro desse período de tempo ou qualquer medicamento que requeira refrigeração, deve ser mantida fria durante a viagem. Isso pode ser feito usando um refrigerador ou uma garrafa térmica refrigerada, que deve ser devidamente armazenada em local refrigerado assim que o destino for alcançado.</p>
+			 <p width="595" height="758" left="398" top="629" border="1">Os antibióticos líquidos das crianças podem variar nas condições de armazenamento recomendadas. Alguns líquidos devem ser refrigerados (porexemplo, Cefalexina), alguns devem ser armazenados à temperatura ambiente (por exemplo, Azitromicina), enquanto outros podem ter diferentes datas de validade, dependendo de qual opção é escolhida (por exemplo, Amoxicilina).</p>
+			 <p width="595" height="758" left="398" top="629" border="1">Fale com o seu farmacêutico sobre o antibiótico específico sob os seus cuidados. Ser diligente em guardar seus medicamentos com segurança e apropriadamente, ajudará a garantir que você obtenha a eficácia de seus medicamentos e a proteção de sua saúde e das pessoas ao seu redor.</p>
+			 <p width="595" height="758" left="398" top="629" border="1">Fonte: Este artigo é uma tradução livre de: Ontário PharmacistsAssociation</p>
+
+</p>
+	</table>
+<footer id="footer">
+  <a href="https://www.facebook.com/blogcareboxx/"><img width="30" height="30" src="imagens/iconfb.png"></a>
+ 
+  <div width="900" align="right"> © 2019 Careboxx</div></footer>
+
+
+    <style type="text/css">
+
+    #footer {
+    background: #043D8E;
+    padding-top: 10px;
+    color: white;
+    left: 13.65%;
+    right: 84.65%;
+    top: 97.21%;
+    bottom: 1.4%;
+
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+    @media screen and (max-width: 960px) {
+    .wrap {
+    width: 100%;
+    }
+</html>
